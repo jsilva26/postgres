@@ -9,14 +9,14 @@ package myApp3.dao;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import myApp3.models.Menu;
+import myApp3.models.TipoUsuario;
 
 /**
  *
  * @author Juan
  */
 @Stateless
-public class MenuFacade extends AbstractFacade<Menu> {
+public class TipoUsuarioDAO extends AbstractDAO<TipoUsuario> {
     @PersistenceContext(unitName = "myApp3PU")
     private EntityManager em;
 
@@ -25,8 +25,8 @@ public class MenuFacade extends AbstractFacade<Menu> {
         return em;
     }
 
-    public MenuFacade() {
-        super(Menu.class);
+    public TipoUsuarioDAO() {
+        super(TipoUsuario.class);
     }
     
 }

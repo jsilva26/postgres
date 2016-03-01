@@ -43,19 +43,23 @@ public class MenuTipoUsuario implements Serializable {
     @Basic(optional = false)
     @Column(name = "id_menu_tipo_usuario")
     private Integer idMenuTipoUsuario;
+    
     @Basic(optional = false)
     @NotNull
     @Column(name = "created")
     @Temporal(TemporalType.TIMESTAMP)
     private Date created;
+    
     @Basic(optional = false)
     @NotNull
     @Column(name = "updated")
     @Temporal(TemporalType.TIMESTAMP)
     private Date updated;
+    
     @JoinColumn(name = "menu_id", referencedColumnName = "id_menu")
     @ManyToOne(optional = false)
     private Menu menuId;
+    
     @JoinColumn(name = "tipo_usuario_id", referencedColumnName = "id_tipo_usuario")
     @ManyToOne(optional = false)
     private TipoUsuario tipoUsuarioId;
@@ -135,7 +139,7 @@ public class MenuTipoUsuario implements Serializable {
 
     @Override
     public String toString() {
-        return "myApp3.models.MenuTipoUsuario[ idMenuTipoUsuario=" + idMenuTipoUsuario + " ]";
+        return tipoUsuarioId.getNombre() + " - " + menuId.getNombre();
     }
     
 }

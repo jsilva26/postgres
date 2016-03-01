@@ -47,23 +47,28 @@ public class TipoUsuario implements Serializable {
     @Basic(optional = false)
     @Column(name = "id_tipo_usuario")
     private Integer idTipoUsuario;
+    
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 100, message = "Debe introducir un nombre")
     @Column(name = "nombre")
     private String nombre;
+    
     @Basic(optional = false)
     @NotNull
     @Column(name = "created")
     @Temporal(TemporalType.TIMESTAMP)
     private Date created;
+    
     @Basic(optional = false)
     @NotNull
     @Column(name = "updated")
     @Temporal(TemporalType.TIMESTAMP)
     private Date updated;
+    
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "tipoUsuarioId")
     private List<MenuTipoUsuario> menuTipoUsuarioList;
+    
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "tipoUsuarioId")
     private List<Usuario> usuarioList;
 
@@ -153,7 +158,7 @@ public class TipoUsuario implements Serializable {
 
     @Override
     public String toString() {
-        return nombre;
+        return nombre + "( " + idTipoUsuario + " )" ;
     }
     
 }

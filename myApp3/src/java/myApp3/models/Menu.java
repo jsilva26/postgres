@@ -36,6 +36,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Menu.findAll", query = "SELECT m FROM Menu m"),
+    @NamedQuery(name = "Menu.findAllOrdenMenu", query = "SELECT m FROM Menu m order by m.raiz, m.orden"),
     @NamedQuery(name = "Menu.findByIdMenu", query = "SELECT m FROM Menu m WHERE m.idMenu = :idMenu"),
     @NamedQuery(name = "Menu.findByNombre", query = "SELECT m FROM Menu m WHERE m.nombre = :nombre"),
     @NamedQuery(name = "Menu.findByImagen", query = "SELECT m FROM Menu m WHERE m.imagen = :imagen"),
@@ -52,46 +53,55 @@ public class Menu implements Serializable {
     @Basic(optional = false)
     @Column(name = "id_menu")
     private Integer idMenu;
+    
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 100, message = "Debe introducir un nombre")
     @Column(name = "nombre")
     private String nombre;
+    
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 100)
     @Column(name = "imagen")
     private String imagen;
+    
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 100)
     @Column(name = "url")
     private String url;
+    
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 100)
     @Column(name = "action")
     private String action;
+    
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 100)
     @Column(name = "raiz")
     private String raiz;
+    
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 100)
     @Column(name = "orden")
     private String orden;
+    
     @Basic(optional = false)
     @NotNull
     @Column(name = "created")
     @Temporal(TemporalType.TIMESTAMP)
     private Date created;
+    
     @Basic(optional = false)
     @NotNull
     @Column(name = "updated")
     @Temporal(TemporalType.TIMESTAMP)
     private Date updated;
+    
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "menuId")
     private List<MenuTipoUsuario> menuTipoUsuarioList;
 
@@ -217,7 +227,7 @@ public class Menu implements Serializable {
 
     @Override
     public String toString() {
-        return nombre;
+        return nombre + "( " + idMenu + " )";
     }
     
 }

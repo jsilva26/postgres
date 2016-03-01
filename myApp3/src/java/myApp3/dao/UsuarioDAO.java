@@ -9,14 +9,15 @@ package myApp3.dao;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import myApp3.models.MenuTipoUsuario;
+import javax.persistence.Query;
+import myApp3.models.Usuario;
 
 /**
  *
  * @author Juan
  */
 @Stateless
-public class MenuTipoUsuarioFacade extends AbstractFacade<MenuTipoUsuario> {
+public class UsuarioDAO extends AbstractDAO<Usuario> {
     @PersistenceContext(unitName = "myApp3PU")
     private EntityManager em;
 
@@ -25,8 +26,19 @@ public class MenuTipoUsuarioFacade extends AbstractFacade<MenuTipoUsuario> {
         return em;
     }
 
-    public MenuTipoUsuarioFacade() {
-        super(MenuTipoUsuario.class);
+    public UsuarioDAO() {
+        super(Usuario.class);
+    }
+    
+    public Usuario getLogin(String usuario, String password){
+        try{
+            Query query = em.createNamedQuery("Usuario.findLogin");
+            query.setParameter("login", usuario);
+            query.setParameter("password", password);
+            return (Usuario)query.getSingleResult();
+        }catch(Exception e){
+            return null;
+        }
     }
     
 }
