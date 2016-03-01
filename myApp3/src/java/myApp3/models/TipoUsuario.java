@@ -48,20 +48,15 @@ public class TipoUsuario implements Serializable {
     @Column(name = "id_tipo_usuario")
     private Integer idTipoUsuario;
     
-    @Basic(optional = false)
-    @NotNull
     @Size(min = 1, max = 100, message = "Debe introducir un nombre")
     @Column(name = "nombre")
     private String nombre;
     
-    @Basic(optional = false)
-    @NotNull
     @Column(name = "created")
     @Temporal(TemporalType.TIMESTAMP)
     private Date created;
     
-    @Basic(optional = false)
-    @NotNull
+    //@Basic(optional = false)
     @Column(name = "updated")
     @Temporal(TemporalType.TIMESTAMP)
     private Date updated;
