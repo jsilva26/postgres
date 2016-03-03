@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <h2> <h:outputText value="Usuarios del Sistema"/> </h2>
+    <h4> <h:messages globalOnly="false" style="color: red"/> </h4>
+    
+    <pre>
+        <h:outputLabel value="Id:              " for="id"/>
+        <h:inputText id="id" value="#{usuarioController.current.idUsuario}" title="Id" disabled="true"/>
+        <br/>
+        <h:outputLabel value="Nombre:          " for="nombre"/>
+        <h:inputText id="nombre" value="#{usuarioController.current.nombre}"/>
+        <br/>
+        <h:outputLabel value="Login:           " for="login"/>
+        <h:inputText id="login" value="#{usuarioController.current.login}"/>
+        <br/>
+        <h:outputLabel value="Password:        " for="password"/>
+        <h:inputText id="password" value="#{usuarioController.current.password}"/>
+        <br/>
+        <h:outputLabel value="Email:           " for="email"/>
+        <h:inputText id="email" value="#{usuarioController.current.email}"/>
+        <br/>
+        <h:outputLabel value="Tipo Usuario:    " for="tipoUsuarioId"/>
+        <h:selectOneMenu id="tipoUsuarioId" value="#{usuarioController.current.tipoUsuarioId}" title="Tipo Usuairo">
+            <f:selectItems value="#{tipoUsuarioController.itemsAvailableSelectOne}"/>
+        </h:selectOneMenu>
+        <br/>
+        <h:outputLabel value="Creado:          " for="created"/>
+        <h:inputText id="created" value="#{usuarioController.current.created}" title="Creado" disabled="true">
+            <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss"/>
+        </h:inputText>
+        <br/>
+        <h:outputLabel value="Modificado:      " for="updated"/>
+        <h:inputText id="updated" value="#{usuarioController.current.updated}" title="Actualizado" disabled="true">
+            <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss"/>
+        </h:inputText>
+    </pre>
+
+</ui:composition>

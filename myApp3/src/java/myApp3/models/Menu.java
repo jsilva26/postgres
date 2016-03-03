@@ -60,32 +60,26 @@ public class Menu implements Serializable {
     @Column(name = "nombre")
     private String nombre;
     
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 100)
+    @Size(max = 100)
     @Column(name = "imagen")
     private String imagen;
     
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 100)
+    @Size(max = 100)
     @Column(name = "url")
     private String url;
-    
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 100)
+   
+    @Size(max = 100)
     @Column(name = "action")
     private String action;
     
     @Basic(optional = false)
-    @NotNull
+    @NotNull(message = "Debe ingresar Raíz")
     @Size(min = 1, max = 100)
     @Column(name = "raiz")
     private String raiz;
     
     @Basic(optional = false)
-    @NotNull
+    @NotNull(message = "Debe ingresar Orden")
     @Size(min = 1, max = 100)
     @Column(name = "orden")
     private String orden;

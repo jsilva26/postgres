@@ -6,6 +6,7 @@
 
 package myApp3.controllers;
 
+
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -17,8 +18,8 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 import javax.faces.model.SelectItem;
-import myApp3.dao.TipoUsuarioDAO;
-import myApp3.models.TipoUsuario;
+import myApp3.dao.MenuDAO;
+import myApp3.models.Menu;
 
 /**
  *
@@ -26,38 +27,35 @@ import myApp3.models.TipoUsuario;
  */
 @ManagedBean
 @SessionScoped
-public class TipoUsuarioController implements Serializable {
+public class MenuController implements Serializable{
 
     @EJB
-    private TipoUsuarioDAO dao;
+    private MenuDAO dao;
+    private Menu current;
     
-    private TipoUsuario current;
-    
-    public TipoUsuario getCurrent(){
-        if(current == null){
-            current = new TipoUsuario();
+    public Menu getCurrent(){
+        if(current==null){
+            current = new Menu();
         }
         return current;
     }
-    /**
-     * Creates a new instance of TipoUsuarioController
-     */
-    public TipoUsuarioController() {
-              
+    
+    public MenuController(){
+        
     }
     
     public String index(){
-            return "/tipoUsuario/index";
+            return "/menu/index";
     }
     
     //Devuelve una lista de tipo usuario, va a ser accesible desde paginas server faces
-    public List<TipoUsuario> listado(){
+    public List<Menu> listado(){
         return dao.findAll();
     }
     
     public String create(){
-        current = new TipoUsuario();
-        return "/tipoUsuario/new";
+        current = new Menu();
+        return "/menu/new";
     }
     
     public String agregar(){
@@ -65,12 +63,12 @@ public class TipoUsuarioController implements Serializable {
         current.setUpdated(d);
         current.setCreated(d);
         dao.create(current);
-        return "/tipoUsuario/index";
+        return "/menu/index";
     }
     
     public String edit(int id){
         current = dao.find(id);
-        return "/tipoUsuario/edit";
+        return "/menu/edit";
     }
     
     public String guardar(){
@@ -80,7 +78,7 @@ public class TipoUsuarioController implements Serializable {
         //current.setCreated(current.getCreated());
         //System.out.println("created: " + current.getCreated());
         dao.edit(current);
-        return "/tipoUsuario/index";
+        return "/menu/index";
     }
     
     public String eliminar(int id){
@@ -90,7 +88,7 @@ public class TipoUsuarioController implements Serializable {
         }catch(Exception e){
             SessionUtil.addErrorMessage("No se puede eliminar registro, posibles datos asociados");
         }
-        return "/tipoUsuario/index";
+        return "/menu/index";
     }
     
     //A continuación métodos de ayuda para acceder al Bean por otras Clases
@@ -114,8 +112,8 @@ public class TipoUsuarioController implements Serializable {
     }
     
     //Clase par conversones, se deben implementar todos los métodos
-    @FacesConverter(forClass = TipoUsuario.class)
-    public static class TipoUsuarioControllerConverter implements Converter{
+    @FacesConverter(forClass = Menu.class)
+    public static class MenuControllerConverter implements Converter{
         
         java.lang.Integer getKey(String value){
             java.lang.Integer key;
@@ -134,7 +132,7 @@ public class TipoUsuarioController implements Serializable {
             if(value==null || value.length() == 0){
                 return null;
             }
-            TipoUsuarioController controller = (TipoUsuarioController)facesContext.getApplication().getELResolver().getValue(facesContext.getELContext(), null, "tipoUsuarioController");
+            MenuController controller = (MenuController)facesContext.getApplication().getELResolver().getValue(facesContext.getELContext(), null, "menuController");
             return controller.dao.find(getKey(value));
         }
         
@@ -143,12 +141,12 @@ public class TipoUsuarioController implements Serializable {
             if(object==null){
                 return null;
             }
-            if(object instanceof TipoUsuario){
-                TipoUsuario o = (TipoUsuario)object;
-                return getStringKey(o.getIdTipoUsuario());
+            if(object instanceof Menu){
+                Menu o = (Menu)object;
+                return getStringKey(o.getIdMenu());
             }
             else{
-                throw new IllegalArgumentException("object " + object + " no es del tipo " + object.getClass().getName() + "; tipo esperado: " + TipoUsuarioController.class.getName());
+                throw new IllegalArgumentException("object " + object + " no es del tipo " + object.getClass().getName() + "; tipo esperado: " + MenuController.class.getName());
             }
         }
     }

@@ -56,10 +56,12 @@ public class MenuTipoUsuario implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Date updated;
     
+    @NotNull(message = "Debe seleccionar un Menu")
     @JoinColumn(name = "menu_id", referencedColumnName = "id_menu")
     @ManyToOne(optional = false)
     private Menu menuId;
     
+    @NotNull(message = "Debe seleccionar un Tipo Usuario")
     @JoinColumn(name = "tipo_usuario_id", referencedColumnName = "id_tipo_usuario")
     @ManyToOne(optional = false)
     private TipoUsuario tipoUsuarioId;

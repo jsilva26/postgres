@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html">
+
+    <h2><h:outputText value="Control de Acceso"/></h2>
+
+    <h4> <h:messages globalOnly="false" style="color: red" /> </h4>
+
+    <pre>
+        <h:outputLabel value="Id:           " for="id" />
+        <h:inputText id="id" value="#{menuTipoUsuarioController.current.idMenuTipoUsuario}" title="Id" disabled="true" />
+        <br/>
+        <h:outputLabel value="Menu:         " for="menuId" />
+        <h:selectOneMenu id="menuId" value="#{menuTipoUsuarioController.current.menuId}" title="MenuId">
+            <f:selectItems value="#{menuController.itemsAvailableSelectOne}"/>
+        </h:selectOneMenu>
+        <br/>
+        <h:outputLabel value="Tipo Usuario: " for="tipousuarioId" />
+        <h:selectOneMenu id="tipoUsuarioId" value="#{menuTipoUsuarioController.current.tipoUsuarioId}" title="TipoUsuarioId">
+            <f:selectItems value="#{tipoUsuarioController.itemsAvailableSelectOne}"/>
+        </h:selectOneMenu>
+        <br/>
+        <h:outputLabel value="Creado:       " for="crated" />
+        <h:inputText id="created" value="#{usuarioController.current.created}" title="Creado" disabled="true" >
+            <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+        </h:inputText>
+        <br/>
+        <h:outputLabel value="Modificado:   " for="updated" />
+        <h:inputText id="updated" value="#{usuarioController.current.updated}" title="Actualizado" disabled="true" >
+            <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss" />
+        </h:inputText>
+    </pre>
+
+</ui:composition>

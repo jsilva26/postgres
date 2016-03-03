@@ -11,11 +11,9 @@
             <h:form>
                 <ui:include src="form.xhtml"/>
                 <h:commandButton value="Agregar" action="#{tipoUsuarioController.agregar()}"/>
+                <h:commandButton value="Cancelar" action="#{tipoUsuarioController.index()}" immediate="true"/>
                 <br/>
                 <br/>
-                <h:commandLink action="#{tipoUsuarioController.index()}" immediate="true">
-                    <h:graphicImage library="images" name="volver.gif"/>
-                </h:commandLink>
             </h:form>
         </f:view>
     </ui:define>

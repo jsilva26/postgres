@@ -9,17 +9,37 @@
     <ui:define name="content">
         <f:view>
             <h:form>
-                <h2> <h:graphicImage library="images" name="tipos.png"/> <h:outputText value="Tipos de Usuarios"/> </h2>
+                <h2> <h:graphicImage library="images" name="menu.png"/> <h:outputText value="Menu"/> </h2>
                 <h4> <h:messages globalOnly="false" style="color: red"/> </h4>
-                <h:dataTable value="#{tipoUsuarioController.listado()}" var="item" rowClasses="webgrid-selected-row" headerClass="webgrid-header">
+                <h:dataTable value="#{menuController.listado()}" var="item" rowClasses="webgrid-selected-row" headerClass="webgrid-header">
                     <h:column>
                         <f:facet name="header"> <h:outputText value="Id"/> </f:facet>
-                        <h:outputText value="#{item.idTipoUsuario}"/>                      
+                        <h:outputText value="#{item.idMenu}"/>                      
                     </h:column>
                     
                     <h:column>
                         <f:facet name="header"> <h:outputText value="Nombre"/> </f:facet>
                         <h:outputText value="#{item.nombre}"/>                      
+                    </h:column>
+                    
+                    <h:column>
+                        <f:facet name="header"> <h:outputText value="Action"/> </f:facet>
+                        <h:outputText value="#{item.action}"/>                      
+                    </h:column>
+                    
+                    <h:column>
+                        <f:facet name="header"> <h:outputText value="Url"/> </f:facet>
+                        <h:outputText value="#{item.url}"/>                      
+                    </h:column>
+                    
+                    <h:column>
+                        <f:facet name="header"> <h:outputText value="Raiz"/> </f:facet>
+                        <h:outputText value="#{item.raiz}"/>                      
+                    </h:column>
+                    
+                    <h:column>
+                        <f:facet name="header"> <h:outputText value="Orden"/> </f:facet>
+                        <h:outputText value="#{item.orden}"/>                      
                     </h:column>
                     
                     <h:column>
@@ -38,20 +58,20 @@
                     
                     <h:column>
                         <f:facet name="header"> <h:outputText value=""/> </f:facet>
-                        <h:commandLink action="#{tipoUsuarioController.edit(item.idTipoUsuario)}">
+                        <h:commandLink action="#{menuController.edit(item.idMenu)}">
                             <h:graphicImage library="images" name="edit.gif"/>
                         </h:commandLink>
                     </h:column>
                     
                     <h:column>
                         <f:facet name="header"> <h:outputText value=""/> </f:facet>
-                        <h:commandLink action="#{tipoUsuarioController.eliminar(item.idTipoUsuario)}">
+                        <h:commandLink action="#{menuController.eliminar(item.idMenu)}">
                             <h:graphicImage library="images" name="delete.gif"/>
                         </h:commandLink>
                     </h:column>
                     
                 </h:dataTable>
-                <h:commandLink action="#{tipoUsuarioController.create()}">
+                <h:commandLink action="#{menuController.create()}">
                     <h:graphicImage library="images" name="crear.gif"/>
                 </h:commandLink>
             </h:form>
