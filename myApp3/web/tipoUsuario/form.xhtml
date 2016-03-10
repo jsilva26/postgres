@@ -11,15 +11,15 @@
     <pre>
         <h:outputLabel value="Id:        " for="id"/>
         <h:inputText id="id" value="#{tipoUsuarioController.current.idTipoUsuario}" title="Id" disabled="true"/>
-        <br/>
+        <br />
         <h:outputLabel value="Nombre:    " for="nombre"/>
         <h:inputText id="nombre" value="#{tipoUsuarioController.current.nombre}"/>
-        <br/>
+        <br />
         <h:outputLabel value="Creado:    " for="created"/>
         <h:inputText id="created" value="#{tipoUsuarioController.current.created}" title="Creado" disabled="true">
             <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss"/>
         </h:inputText>
-        <br/>
+        <br />
         <h:outputLabel value="Modificado:" for="updated"/>
         <h:inputText id="updated" value="#{tipoUsuarioController.current.updated}" title="Actualizado" disabled="true">
             <f:convertDateTime pattern="dd/MM/yyyy HH:mm:ss"/>

@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+    <h3><h:outputText value="Menu Usuario"/></h3>
+    
+  
+        <h:form>
+            
+            <c:if test="#{!homeController.logueado()}">
+                <h:commandLink action="#{homeController.login()}" value="Ingreso"/> 
+            </c:if>
+            
+            <c:if test="#{homeController.logueado()}">
+                <h:commandLink action="#{homeController.logout()}" value="Salir"/>
+                <br/>
+                <h:commandLink action="#{homeController.cambio_clave()}" value="Cambiar Clave"/>
+            </c:if> 
+            
+        </h:form>
+  
+    
+  
+  
+  
+    
+    <br/>
+
+</ui:composition>
